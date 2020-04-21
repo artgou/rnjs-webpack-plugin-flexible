@@ -1,0 +1,10 @@
+node_modules/
+coverage/
+demo/
+test/
+build/
+src/
+.npmignore
+gulpfile.js
+package-lock.json
+yarn.lock

@@ -1,0 +1,32 @@
+{
+  "name": "rnjs-webpack-plugin-flexible",
+  "description": "flexible+webpack，在 lib-flexible 的基础上加入了页面最大宽度定义",
+  "version": "1.0.1",
+  "author": {
+    "name": "Rich.Lee",
+    "email": "909183@qq.com",
+    "website": "richlee.cn"
+  },
+  "scripts": {
+    "git": "git add . && git commit -am",
+    "publish2": "node build/publish.js"
+  },
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "current-processes": "^0.2.1",
+    "rimraf": "^2.6.2",
+    "semver": "^5.4.1"
+  },
+  "keywords": [
+    "flexible",
+    "移动端适配",
+    "flexible-webpack"
+  ],
+  "repository": "https://github.com/artgou/rnjs-webpack-plugin-flexible",
+  "engines": {},
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/artgou/rnjs-webpack-plugin-flexible/issues"
+  }
+}
