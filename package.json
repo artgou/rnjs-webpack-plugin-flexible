@@ -1,7 +1,7 @@
 {
   "name": "rnjs-webpack-plugin-flexible",
   "description": "flexible+webpack，在 lib-flexible 的基础上加入了页面最大宽度定义",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "author": {
     "name": "Rich.Lee",
     "email": "909183@qq.com",
