@@ -43,13 +43,18 @@ WebpackPluginFlexible.prototype.innerScript = function (htmlPluginData, callback
     if (maxWidth && typeof maxWidth === 'string') {
       throw new Error('maxWidth只支持数值(px)，0表示最大宽度为100%')
     }
+    let opts = {
+      maxWidth: this.options.maxWidth,
+      size: this.options.size,
+      remUnit: this.options.remUnit,
+    }
     htmlPluginData.body.push({
       tagName: 'script',
       attributes: {
         type: 'text/javascript',
       },
       closeTag: true,
-      innerHTML: `;var flexibleOptions = ${JSON.stringify(this.options)};`
+      innerHTML: `;var flexibleOptions = ${JSON.stringify(opts)};`
     })
     htmlPluginData.body.push({
       tagName: 'script',
