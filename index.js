@@ -6,6 +6,19 @@ function WebpackPluginFlexible (options = {}) {
     ignore: [],      // 忽略页面，支持正则和字串 ['prod-detail.html', /prod-.*/]
     flexibleJSUrl: '/static/libs/rich/flexible.js'    // flexible.js文件(也可以用别的文件把flexible.js包起来)
   }
+  // 修改windows下的正则路径问题
+  if (Array.isArray(options.ignore) && process.platform === 'win32') {
+    for (let i = 0; i < options.ignore.length; i++) {
+      let item = options.ignore[i]
+      if (istype(item, 'RegExp')) {
+        let str = item.toString()
+        str = str.substr(1, str.length - 2)
+        if (str.indexOf('/') !== -1) {
+          options.ignore[i] = new RegExp(str.replace(/\//g, '\\'))
+        }
+      }
+    }
+  }
   this.options = Object.assign({}, defaultOptions, options);
 }
 
@@ -32,8 +45,9 @@ WebpackPluginFlexible.prototype.innerScript = function (htmlPluginData, callback
   var isIgnore = false;
   var template = htmlPluginData.outputName;
   if (this.options.hasOwnProperty('ignore') && this.options.ignore.length > 0) {
+    let templatePath = htmlPluginData.plugin.options.template
     this.options.ignore.map(item => {
-      if (item === template || (istype(item, 'RegExp') && template.match(item))) {
+      if (item === template || (istype(item, 'RegExp') && templatePath.match(item))) {
         isIgnore = true;
       }
     });
